@@ -1,0 +1,205 @@
+@use '../util/' as *;
+@use '../globals/' as *;
+.authentication {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: $darkgray;
+    &.done {
+        display: none;
+    }
+    &__sign-in,
+    &__sign-up {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -35%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &>.logo {
+            height: 80px;
+            margin: 0 0 20px 0;
+            &>h1 {
+                font-size: rem(60);
+            }
+        }
+        &__type {
+            background: linear-gradient(to right, $lightpurple, #410f9b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: rem(50);
+            margin: 0 0 10px 0;
+        }
+        &__error {
+            margin: 0 0 10px 0;
+            font-size: rem(20);
+            color: rgb(219, 1, 67);
+        }
+        &__email,
+        &__password,
+        &__name,
+        &__lastname {
+            text-align: center;
+            &__border {
+                border-radius: 50px;
+                background: linear-gradient(to right, $lightpurple, #410f9b);
+                margin-bottom: 15px;
+                padding: 7px;
+            }
+            &__text {
+                color: $lightgray;
+                margin-bottom: 5px;
+                font-size: rem(20);
+            }
+            &__data {
+                color: $white;
+                background: none;
+                min-width: 200px;
+                max-width: 300px;
+                outline: none;
+                border: none;
+                border-radius: 50px;
+                background-color: $darkgray;
+                padding: 5px 10px;
+                text-align: center;
+                font-size: rem(20);
+                font-weight: 700;
+                &::placeholder {
+                    color: $white;
+                    text-align: center;
+                    font-size: rem(20);
+                    font-weight: 700;
+                }
+            }
+        }
+        &__password__data {
+            font: large Verdana, sans-serif;
+            letter-spacing: 0.2px;
+        }
+        &__button {
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(to right, $lightpurple, #410f9b);
+            font-size: rem(20);
+            font-family: font;
+            padding: 7.5px 20px;
+            margin-top: 10px;
+            color: $lightgray;
+            cursor: pointer;
+            &:hover {
+                background: linear-gradient(to right, $lighterpurple, #4d12b9);
+            }
+        }
+        &__goto-sign-in,
+        &__goto-sign-up {
+            color: $lighterpurple;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 10px;
+            font-size: rem(15);
+        }
+    }
+    @include breakpoint('medium') {
+        & {
+            &__sign-in,
+            &__sign-up {
+                &>.logo {
+                    height: 110px;
+                    margin: 0 0 20px 0;
+                    &>h1 {
+                        font-size: rem(100);
+                    }
+                }
+                &__type {
+                    font-size: rem(70);
+                    margin: 0 0 10px 0;
+                }
+                &__error {
+                    margin: 0 0 10px 0;
+                    font-size: rem(20);
+                }
+                &__email,
+                &__password,
+                &__name,
+                &__lastname {
+                    &__text {
+                        font-size: rem(30);
+                    }
+                    &__data {
+                        min-width: 300px;
+                        max-width: 500px;
+                        padding: 5px 10px;
+                        font-size: rem(30);
+                    }
+                }
+                &__button {
+                    font-size: rem(25);
+                    padding: 10px 30px;
+                    &:hover {
+                        background: linear-gradient(to right, $lighterpurple, #4d12b9);
+                    }
+                }
+                &__goto-sign-in,
+                &__goto-sign-up {
+                    font-size: rem(18);
+                }
+            }
+        }
+    }
+    @include breakpoint-h-down('small') {
+        & {
+            overflow: scroll;
+            &__sign-up {
+                &>.logo {
+                    height: 60px;
+                    margin: 0 0 5px 0;
+                    &>h1 {
+                        font-size: rem(45);
+                    }
+                }
+                &__type {
+                    font-size: rem(40);
+                    margin: 0;
+                }
+                &__error {
+                    margin: 0 0 5px 0;
+                    font-size: rem(12);
+                }
+                &__email,
+                &__password,
+                &__name,
+                &__lastname {
+                    &__border {
+                        margin-bottom: 10px;
+                        padding: 5px;
+                    }
+                    &__text {
+                        margin-bottom: 2px;
+                        font-size: rem(15);
+                    }
+                    &__data {
+                        min-width: 200px;
+                        max-width: 300px;
+                        padding: 5px 10px;
+                        font-size: rem(15);
+                    }
+                }
+                &__button {
+                    font-size: rem(15);
+                    padding: 7.5px 20px;
+                    margin-top: 5px;
+                }
+                &__goto-sign-in,
+                &__goto-sign-up {
+                    margin-top: 5px;
+                    font-size: rem(12);
+                }
+            }
+        }
+    }
+}

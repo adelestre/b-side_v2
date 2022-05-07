@@ -1,0 +1,75 @@
+@use '../util' as *;
+@use '../globals' as *;
+.header-always-on-top {
+    z-index: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 68px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: none;
+    padding: 20px 16px;
+    pointer-events: none;
+    @include breakpoint-down("small") {
+        height: 62.5px;
+    }
+    @include breakpoint-down("xsmall") {
+        height: 59px;
+    }
+    &__menu-toggle {
+        width: 24px;
+        height: 24px;
+        transform: scale(1.2);
+        margin: 0 20px 0 10px;
+        background: none;
+        border: none;
+        color: white;
+        padding: 0;
+        pointer-events: all;
+        @include breakpoint-down('medium') {
+            display: none;
+        }
+        @include breakpoint-down('small') {
+            transform: scale(1);
+            margin: 0 20px 0 5px;
+
+        }
+        @include breakpoint-down('xsmall') {
+            transform: scale(0.8);
+            margin: 0 20px 0 0;
+
+        }
+    }
+    &__profil {
+        pointer-events: all;
+        position: absolute;
+        right: 16px;
+        margin: 10px 8px;
+        padding: 5px 5px 5px 15px;
+        display: flex;
+        align-items: center;
+        border-radius: 50px;
+        background-color: black;
+        @include breakpoint-down("small") {
+            padding: 0 0 0 10px;
+        }
+        &__name {
+            font-size: rem(20);
+            color: $lightgray;
+            @include breakpoint-down("small") {
+                font-size: rem(17);
+            }
+            @include breakpoint-down("xsmall") {
+                font-size: rem(14);
+            }
+        }
+        &>span {
+            color: $lightgray2;
+            font-size: rem(30);
+            padding: 0;
+        }
+    }
+}

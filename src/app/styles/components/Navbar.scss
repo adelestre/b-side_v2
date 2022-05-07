@@ -1,0 +1,202 @@
+@use '../util' as *;
+@use '../globals' as *;
+.nav-bar {
+    position: fixed;
+    background: linear-gradient(to bottom, $darkgray, #2a2136, $purple2);
+    width: 225px;
+    top: 0;
+    bottom: 90px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 0;
+    user-select: none;
+    cursor: default;
+    &__content {
+        margin: 0 16px;
+        display: flex;
+        width: 150px;
+        flex-direction: column;
+        align-items: center;
+        &__img-container {
+            z-index: 1;
+            width: 150px;
+            height: 125px;
+            border-bottom: 1.5px solid $lightgray;
+            background: linear-gradient(to bottom, $darkgray, #2a2136 250%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &__img-content {
+                width: 56px;
+                height: 56px;
+                &__img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        &__infos {
+            display: flex;
+            flex-direction: row;
+            width: 150px;
+            height: fit-content;
+            padding: 36px 0 16px 0;
+            transform: translateY(-1.5px);
+            border-bottom: 1.5px solid $lightgray;
+            transition: 300ms;
+            justify-content: center;
+            &.hide {
+                transform: translateY(-267.5px);
+            }
+            &__content {
+                display: flex;
+                flex-direction: column;
+                &__img-container {
+                    width: 128px;
+                    height: 128px;
+                    min-height: 0;
+                    margin-bottom: 16px;
+                    &__img {
+                        border-radius: 100%;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                &__artist-infos {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: left;
+                    &__name-container {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: left;
+                        align-items: center;
+                        margin-bottom: 8px;
+                        &__name {
+                            font-size: rem(14);
+                            color: $lightgray;
+                            margin-right: 8px;
+                        }
+                        &__verified {
+                            width: 12px;
+                            height: 12px;
+                        }
+                    }
+                    &__followers-container {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        margin-bottom: 8px;
+                        &__followers-logo {
+                            width: 18px;
+                            height: 12px;
+                            margin-right: 8px;
+                        }
+                        &__followers-count {
+                            font-size: rem(14);
+                            color: $lightgray2;
+                            font-weight: 0;
+                        }
+                    }
+                    &__follow {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        width: fit-content;
+                        padding: 2px 8px;
+                        background-color: #ffffff48;
+                        border: none;
+                        border-radius: 2px;
+                        color: $lightgray;
+                        font-size: rem(11);
+                        &>span {
+                            color: $lightgray;
+                            margin-right: 4px;
+                            font-size: rem(12);
+                        }
+                    }
+                }
+            }
+        }
+        &__menu {
+            display: grid;
+            justify-content: center;
+            padding-top: 12px;
+            width: 150px;
+            transition: 300ms;
+            &.up {
+                transform: translateY(-267.5px);
+            }
+            &__item__home,
+            &__item__playlist {
+                color: $lightgray;
+                font-size: rem(20);
+                font-weight: 0;
+                text-decoration: none;
+                width: fit-content;
+                background: none;
+                border: none;
+                cursor: pointer;
+                transition: 100ms ease-in-out;
+                &:not(:last-child) {
+                    margin-bottom: 10px;
+                }
+                &:hover {
+                    color: white;
+                }
+                &>span {
+                    //icon
+                    font-size: rem(29);
+                    position: relative;
+                    top: 5px;
+                    margin-right: 10px;
+                }
+            }
+        }
+        &__logout,
+        &__settings {
+            position: absolute;
+            bottom: 1.5%;
+            left: 3%;
+            transform: translate(-3%, 1.5%);
+            border: none;
+            background: none;
+            outline: none;
+            cursor: pointer;
+            &>span {
+                color: $lightgray;
+                font-size: rem(30);
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+        &__logout {
+            bottom: 1.5%;
+            right: 3%;
+            left: unset;
+            transform: translate(3%, 1.5%);
+        }
+    }
+}
+
+@include breakpoint-down('medium') {
+    .nav-bar {
+        left: -226px;
+        transition: 300ms ease-in-out;
+    }
+    .nav-bar.mobile-open {
+        left: 0;
+    }
+}
+
+.only-mobile {
+    display: block;
+}
+
+@include breakpoint('large') {
+    .only-mobile {
+        display: none;
+    }
+}
