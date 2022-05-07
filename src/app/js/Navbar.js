@@ -15,8 +15,6 @@ export function displayArtistInfoNavBar(artist) {
         menu.classList.remove("up")
     }
 }
-edeinodan
-dimodoan
 
 export function Navbar() {
 
