@@ -58,7 +58,7 @@ function AlbumInfoHeader(props) {
                     <div className={"info-tab__header__content__top__info__name" + (album.data()["Long"] ? " long" : "")}>{album.data()["Name"]}</div>
                     <div className="info-tab__header__content__top__info__details">
                         <div className="info-tab__header__content__top__info__details__author">{artist.data()["Name"]}</div>
-                        <div className="info-tab__header__content__top__info__details__date">{artist.data()["Date"]}</div>
+                        <div className="info-tab__header__content__top__info__details__date">{album.data()["Date"]}</div>
                         <div className="info-tab__header__content__top__info__details__count">{album.data()["ID_Songs"].length + " songs, " + album.data()["Duration"]}</div>
                     </div>
                 </div>
