@@ -14,7 +14,7 @@ export function toggleNavMenu() {
 }
 
 function Header(props) {
-    var userName = props.userData["Name"]
+    let userName = props.userData["Name"]
 
     return (
         <div className="header-always-on-top">

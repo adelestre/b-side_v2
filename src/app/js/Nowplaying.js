@@ -3,12 +3,12 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import '../styles/components/Nowplaying.scss'
 import { auth, db } from './Firebase'
 
-var volume = {
+let volume = {
     value: 0.125,
     muted: false,
 }
 
-var currentAudio = {
+let currentAudio = {
     exists: false,
     element: null
 }
@@ -16,7 +16,7 @@ var currentAudio = {
 function initAudio(song) {
     const body = document.querySelector("body")
     const progress_fill = document.querySelector("#song-progress-fill");
-    var audio = new Audio("./resssources/songs/" + song + ".mp3");
+    let audio = new Audio("./resssources/songs/" + song + ".mp3");
     audio.volume = volume.value;
     if (volume.muted)
         audio.muted = true;
@@ -41,10 +41,10 @@ function update_current_time() {
     // Update playing song's time display
     const current_time = document.querySelector("#current-time");
     if (currentAudio.exists) {
-        var current_time_string = "";
-        var min = Math.floor(currentAudio.element.currentTime / 60);
+        let current_time_string = "";
+        let min = Math.floor(currentAudio.element.currentTime / 60);
         current_time_string += min + ":";
-        var sec = Math.floor(currentAudio.element.currentTime) - min * 60;
+        let sec = Math.floor(currentAudio.element.currentTime) - min * 60;
         if (sec < 10) {
             current_time_string += "0";
         }
@@ -60,7 +60,7 @@ function progressOnClick(e) {
 function modVolume(float) { // adds 'float' to volume
     const volume_slider_fill = document.querySelector("#volume-slider-fill");
     const volume_slider_thumb = document.querySelector("#volume-slider-thumb");
-    var vol = volume_slider_thumb.value
+    let vol = volume_slider_thumb.value
     volume_slider_thumb.value = `${parseInt(vol) + float}`;
     volume.value = 0.25 - (volume_slider_thumb.value / 400)
     if (currentAudio.exists)
@@ -85,9 +85,9 @@ function updateCurrentSong(song) {
     const current_song_artist = document.querySelector(".now-playing-bar__current-song__title-artist-container__artist");
     const current_song_container = document.querySelector(".now-playing-bar__current-song");
     const pageTitle = document.querySelector('title');
-    var tile = document.querySelector("#song" + song.data()["ID_Song"].toString());
+    let tile = document.querySelector("#song" + song.data()["ID_Song"].toString());
     if (tile) {
-        var other_tiles = document.querySelectorAll('.playing');
+        let other_tiles = document.querySelectorAll('.playing');
         other_tiles.forEach(element => { element.classList.remove('playing') })
         tile.classList.add('playing');
     }
@@ -139,7 +139,7 @@ function pause() {
 }
 function queueNext() {
     getDoc(doc(db, "Users", auth.currentUser.uid)).then(user => {
-        var Q = user.data()["P_Queue"];
+        let Q = user.data()["P_Queue"];
         if (Q.length !== 0) {
             play(Q.shift());
             updateDoc(doc(db, "Users", auth.currentUser.uid), {
@@ -151,7 +151,7 @@ function queueNext() {
 function queuePrevious() {
     if (currentAudio.element.currentTime <= 3) {
         getDoc(doc(db, "Users", auth.currentUser.uid)).then(user => {
-            var index = user.data()["Queue"].findIndex(song => song === user.data()["P_Queue"][0]);
+            let index = user.data()["Queue"].findIndex(song => song === user.data()["P_Queue"][0]);
             if (index - 2 >= 0) {
                 play(user.data()["Queue"][index - 2]);
             } else {
@@ -165,13 +165,13 @@ function queuePrevious() {
 }
 export function setQueue(arr, count) {
     if (count) {
-        var i = count;
+        let i = count;
         while (i > 0) {
             arr.push(arr.shift());
             i--;
         }
     }
-    var temp = [];
+    let temp = [];
     arr.forEach(sng => {
         temp.push(sng);
     });

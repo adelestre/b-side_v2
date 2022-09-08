@@ -2,7 +2,6 @@ import '../styles/components/App.scss';
 import Auth from './Auth'
 import Main from './Main';
 import { auth } from './Firebase';
-import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth'
 
 

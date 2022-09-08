@@ -3,8 +3,9 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore';
 
+const API_Key = process.env.REACT_APP_FIREBASE_API_KEY;
 const firebaseConfig = {
-    apiKey: "AIzaSyDgLCO6MVtGa52_1gAHKHlTYEh6Lo5r1rE",
+    apiKey: API_Key,
     authDomain: "library-innocent-and-musical.firebaseapp.com",
     databaseURL: "https://library-innocent-and-musical-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "library-innocent-and-musical",

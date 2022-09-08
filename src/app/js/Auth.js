@@ -3,8 +3,6 @@ import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import '../styles/components/Auth.scss'
 import { auth, db } from './Firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { initMain } from "./Main";
-
 
 function Auth() {
     let navigate = useNavigate();

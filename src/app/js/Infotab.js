@@ -15,7 +15,7 @@ export function backHome() {
 }
 
 function select_song(e) {
-    var selected_songs = document.querySelectorAll(".info-tab__content__song.selected");
+    const selected_songs = document.querySelectorAll(".info-tab__content__song.selected");
     selected_songs.forEach((selected_song) => {
         selected_song.classList.remove("selected");
     })
@@ -78,12 +78,12 @@ function AlbumInfoHeader(props) {
 function AlbumInfoContent(props) { // Loads all songs from Artist
     const album = props.album
     const artist = props.artist
-    var count = 0;
+    let count = 0;
     const [songs] = useCollection(query(collection(db, "Songs"), where("ID_Album", "==", album.data()["ID_Album"]), orderBy("ID_Song")))
     return (
         <div className="info-tab__content">
             {songs && songs.docs.map(song => {
-                return AlbumInfoSongs(song, artist, album, count)
+                return AlbumInfoSongs(song, artist, album, count++)
             })}
         </div>
     )
