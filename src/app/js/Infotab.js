@@ -25,8 +25,8 @@ function select_song(e) {
 function AlbumInfoSongs(song, artist, album, count) {
     return (
         <div id={"song" + song.data()["ID_Song"]} key={"song" + song.data()["ID_Song"]} className={"info-tab__content__song album" + album.data()["ID_Album"]} onClick={select_song}>
-            <button className="material-icons-round" onClick={e => setQueue(album.data()['ID_Songs'], count)}>play_arrow</button>
             <div className="info-tab__content__song__left-content">
+                <button className="material-icons-round" onClick={e => setQueue(album.data()['ID_Songs'], count)}>play_arrow</button>
                 <div className="info-tab__content__song__left-content__img-container">
                     <img src={album.data()["img"]} alt=""></img>
                 </div>
@@ -35,7 +35,9 @@ function AlbumInfoSongs(song, artist, album, count) {
                     <div className="info-tab__content__song__left-content__artist-title-container__artist">{artist.data()["Name"]}</div>
                 </div>
             </div>
-             
+             <div className="info-tab__content__song__middle-content">
+                <div className="info-tab__content__song__middle-content__album">{album.data()["Name"]}</div>
+             </div>
             <div className="info-tab__content__song__right-content">
                 <button className="info-tab__content__song__right-content__like material-icons-round">favorite_border</button>
                 <div className="info-tab__content__song__right-content__duration">{song.data()["Duration"]}</div>

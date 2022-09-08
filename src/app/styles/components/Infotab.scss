@@ -256,10 +256,19 @@
                     background: none;
                     border: none;
                     margin: 50px 0 15px 50px;
+                    @include breakpoint-down("medium") {
+                        margin: 40px 0 15px 40px;
+                    }
+                    @include breakpoint-down("small") {
+                        margin: 25px 0 15px 25px;
+                    }
                     &>span {
                         color: $lightgray;
                         font-size: rem(80);
                         cursor: pointer;
+                        @include breakpoint-down("small") {
+                            font-size: rem(60);
+                        }
                     }
                 }
             }
@@ -276,34 +285,41 @@
             padding: 0 0 16px 0;
         }
         &__song {
-            grid-gap: 16px;
-            display: grid;
-            grid-template-columns: 16px 4fr minmax(120px, 1fr);
-            padding: 8px 24px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
+            padding: 8px 24px;
             @include breakpoint-down("small") {
                 padding: 8px 8px 16px 8px;
             }
             @include breakpoint-down("xsmall") {
                 padding: 8px 4px 8px 8px;
             }
-            &>button {
-                position: relative;
-                cursor: pointer;
-                outline: none;
-                border-radius: 100%;
-                border: none;
-                background: none;
-                padding: 0;
-                opacity: 1;
-                transition: 0.2s;
-                color: $lightgray;
-            }
             &__left-content {
                 height: inherit;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                min-width: 34%;
+                @include breakpoint-down("medium") {
+                   min-width: 40%; 
+                }
+                @include breakpoint-down("small") {
+                    min-width: 70%; 
+                 }
+                &>button {
+                    position: relative;
+                    cursor: pointer;
+                    outline: none;
+                    border-radius: 100%;
+                    border: none;
+                    background: none;
+                    padding: 0;
+                    opacity: 1;
+                    transition: 0.2s;
+                    color: $lightgray;
+                }
                 &__img-container {
                     display: flex;
                     flex-direction: row;
@@ -338,38 +354,55 @@
                         text-overflow: ellipsis;
                         white-space: nowrap;
                         max-width: inherit;
-                        font-size: rem(20);
+                        font-size: rem(22);
                         text-transform: none;
                         @include breakpoint-down("large") {
-                            font-size: rem(18);
-                        }
-                        @include breakpoint-down("small") {
-                            font-size: rem(16);
+                            font-size: rem(19);
                         }
                     }
                     &__artist {
                         color: $lightgray;
                         word-break: break-all;
-                        font-size: rem(14);
+                        font-size: rem(16);
                         opacity: 0.8;
                         @include breakpoint-down("large") {
-                            font-size: rem(13);
-                        }
-                        @include breakpoint-down("small") {
-                            font-size: rem(12);
+                            font-size: rem(15);
                         }
                     }
+                }
+            }
+            &__middle-content {
+                max-width: 33%;
+                @include breakpoint-down("medium") {
+                    max-width: 30%;
+                }
+                @include breakpoint-down("small") {
+                    visibility: hidden;
+                    width: 0;
+                }
+                & > div {
+                    color: $lightgray;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                 }
             }
             &__right-content {
                 display: flex;
                 flex-direction: row;
                 justify-content: right;
+                min-width: 33%;
+                @include breakpoint-down("medium") {
+                    min-width: 20%;
+                }
                 @include breakpoint-down("small") {
-                    transform: scale(0.8);
+                    min-width: 30%;
                 }
                 @include breakpoint-down("xsmall") {
-                    transform: scale(0.6);
+                    transform: scale(0.8);
+                }
+                & > div {
+                    align-self: center;
                 }
                 &__like {
                     border: none;
@@ -377,6 +410,12 @@
                     margin-right: 16px;
                     color: $lightgray;
                     cursor: pointer;
+                    @include breakpoint-down("small") {
+                        margin-right: 8px;
+                    }
+                    @include breakpoint-down("xsmall") {
+                        margin-right: 4px;
+                    }
                 }
                 &__duration {
                     color: $lightgray;
@@ -385,14 +424,22 @@
                     font-size: rem(16);
                     text-align: right;
                     margin-right: 16px;
+                    @include breakpoint-down("small") {
+                        margin-right: 8px;
+                    }
+                    @include breakpoint-down("xsmall") {
+                        margin-right: 4px;
+                    }
                 }
                 &__options {
                     color: $lightgray;
                     text-align: right;
-                    opacity: 0;
                     cursor: pointer;
-                    @include breakpoint-down("medium") {
-                        opacity: 1;
+                    @include breakpoint-down("small") {
+                        margin-right: 8px;
+                    }
+                    @include breakpoint-down("xsmall") {
+                        margin-right: 4px;
                     }
                 }
             }
