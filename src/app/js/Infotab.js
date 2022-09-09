@@ -15,33 +15,34 @@ export function removeInfoTab() {
 }
 
 export function select_song(e) {
-    const selected_songs = document.querySelectorAll(".info-tab__content__song.selected");
+    const selected_songs = document.querySelectorAll(".bar-info-song__content__song.selected");
     selected_songs.forEach((selected_song) => {
         selected_song.classList.remove("selected");
     })
     e.target.parentNode.classList.add('selected');
 }
 
-export function BarInfoSong(song, artist, album, count, classname) {
+export function BarInfoSong(song, artist, album, count) {
+    let playing = count < 0 ? " playing" : ""
     return (
-        <div id={"song" + song.data()["ID_Song"]} key={"song" + song.data()["ID_Song"]} className={classname+" album" + album.data()["ID_Album"]} onClick={select_song}>
-            <div className={classname+"__left-content"}>
-                {count >= 0 && <button className="material-icons-round" onClick={e => setQueue(album.data()['ID_Songs'], count)}>play_arrow</button>}
-                <div className={classname+"__left-content__img-container"}>
+        <div id={"song" + song.data()["ID_Song"]} key={"song" + song.data()["ID_Song"]} className={"bar-info-song__content__song album" + album.data()["ID_Album"] + playing} onClick={select_song}>
+            <div className={"bar-info-song__content__song__left-content"}>
+                {count >= 0 ? <button className="material-icons-round" onClick={e => setQueue(album.data()['ID_Songs'], count)}>play_arrow</button> : <button className="material-icons-round hidden" >play_arrow</button>}
+                <div className={"bar-info-song__content__song__left-content__img-container"}>
                     <img src={album.data()["img"]} alt=""></img>
                 </div>
-                <div className={classname+"__left-content__artist-title-container"}>
-                    <div className={classname+"__left-content__artist-title-container__title"}>{song.data()["Name"]}</div>
-                    <div className={classname+"__left-content__artist-title-container__artist"}>{artist.data()["Name"]}</div>
+                <div className={"bar-info-song__content__song__left-content__artist-title-container"}>
+                    <div className={"bar-info-song__content__song__left-content__artist-title-container__title"}>{song.data()["Name"]}</div>
+                    <div className={"bar-info-song__content__song__left-content__artist-title-container__artist"}>{artist.data()["Name"]}</div>
                 </div>
             </div>
-             <div className={classname+"__middle-content"}>
-                <div className={classname+"__middle-content__album"}>{album.data()["Name"]}</div>
+             <div className={"bar-info-song__content__song__middle-content"}>
+                <div className={"bar-info-song__content__song__middle-content__album"}>{album.data()["Name"]}</div>
              </div>
-            <div className={classname+"__right-content"}>
-                <button className={classname+"__right-content__like material-icons-round"}>favorite_border</button>
-                <div className={classname+"__right-content__duration"}>{song.data()["Duration"]}</div>
-                <div className={classname+"__right-content__options material-icons-round"}>more_vert</div>
+            <div className={"bar-info-song__content__song__right-content"}>
+                <button className={"bar-info-song__content__song__right-content__like material-icons-round"}>favorite_border</button>
+                <div className={"bar-info-song__content__song__right-content__duration"}>{song.data()["Duration"]}</div>
+                <div className={"bar-info-song__content__song__right-content__options material-icons-round"}>more_vert</div>
             </div>   
         </div>
     )
@@ -83,9 +84,9 @@ function AlbumInfoContent(props) { // Loads all songs from Artist
     let count = 0;
     const [songs] = useCollection(query(collection(db, "Songs"), where("ID_Album", "==", album.data()["ID_Album"]), orderBy("ID_Song")))
     return (
-        <div className="info-tab__content">
+        <div className="bar-info-song__content">
             {songs && songs.docs.map(song => {
-                return BarInfoSong(song, artist, album, count++, "info-tab__content__song")
+                return BarInfoSong(song, artist, album, count++)
             })}
         </div>
     )

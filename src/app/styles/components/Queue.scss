@@ -69,53 +69,19 @@
             padding-left: 2px;
         }
     }
-    &__header {
-        left: 0;
-        right: 0;
-        &__background {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            height: 430px;
-            background-position: center;
-            background-size: cover;
-            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1.0), transparent 100%);
-            filter: blur(8px);
-            opacity: 0.5;
-            pointer-events: none;
-        }
-        &__content {
-            right: 0;
-            left: 0;
-            top: 0;
-            padding: 0 24px 0 32px;
-            @include breakpoint-down("small") {
-                padding: 0 16px 0 24px;
-            }
-            @include breakpoint-down("xsmall") {
-                padding: 0 8px 0 16px;
-            }
-            &__top {
-                padding-top: 80px;
-                display: flex;
-                flex-direction: column;
-                gap: 18px;
-                max-width: none;
-                overflow: hidden;
-                position: relative;
-                color: $lightgray;
-                &__queue {
-                    font-size: rem(32);
-                }
-                &__nowplaying {
-                    font-size: rem(24);
-                }
-            }
-        }
-    }
     &__content {
+        padding-top: 80px;
         background-color: $darkgray;
+        color: $lightgray;
+        &__header {
+            padding-left: 46px;
+            font-size: rem(32);
+        }
+        &__sub-header {
+            padding-left: 46px;
+            font-size: rem(24);
+            padding-top: 32px
+        }
         &__song {
             width: 100%;
             display: flex;

@@ -30,21 +30,16 @@ function Queue(props) {
     return (
       <div id='queue' className='queue'>
         <button id="info-button-back" className="queue__button-back"><span className="material-icons-round" onClick={e => removeQueueTab()}>arrow_back_ios</span></button>
-        <div className='queue__header'>
-          <div className='queue__header__content'>
-            <div className='queue__header__content__top'>
-              <div className='queue__header__content__top__queue'>Queue</div>
-              <div className='queue__header__content__top__nowplaying'>Now playing</div>
-              {BarInfoSong(currentSong, currentSongArtist, currentSongAlbum, -1, "queue__content__song")}
-            </div>
-          </div>
-        </div>
         <div className='queue__content'>
+          <div className='queue__content__header'>Queue</div>
+          <div className='queue__content__sub-header'>Now playing</div>
+          {BarInfoSong(currentSong, currentSongArtist, currentSongAlbum, -1)}
+          <div className='queue__content__sub-header'>Coming next</div>
           {user.data()["P_Queue"].map(song_ID => {
             const song = songs.docs.find(doc => doc.data()["ID_Song"] === song_ID)
             const album = albums.docs.find(doc => doc.data()["ID_Album"] === song.data()["ID_Album"])
             const artist = artists.docs.find(doc => doc.data()["ID_Artist"] === song.data()["ID_Artist"])
-            return BarInfoSong(song, artist, album, count++, "queue__content__song")
+            return BarInfoSong(song, artist, album, count++)
           })}
         </div>
       </div>
