@@ -1,6 +1,8 @@
 import React from 'react'
 import { signOut } from 'firebase/auth'
 import { auth } from './Firebase'
+import { removeInfoTab } from './Infotab'
+import { displayQueue, removeQueueTab } from './Queue'
 import '../styles/components/Navbar.scss'
 
 export function displayArtistInfoNavBar(artist) {
@@ -16,9 +18,9 @@ export function displayArtistInfoNavBar(artist) {
     }
 }
 
-export function displayQueue() {
-    const queue = document.querySelector("#queue");
-    queue.classList.add('show');
+export function backHome() {
+    removeInfoTab();
+    removeQueueTab();
 }
 
 export function Navbar() {
@@ -50,8 +52,8 @@ export function Navbar() {
                     </div>
                 </div>
                 <div className="nav-bar__content__menu up">
-                    <button type="button" className="nav-bar__content__menu__item__home"><span className="material-icons-round">home</span>Home</button>
-                    <button type="button" className="nav-bar__content__menu__item__playlist"><span className="material-icons-round" onClick={e => displayQueue()} >playlist_play</span>Playlists</button>
+                    <button type="button" className="nav-bar__content__menu__item__home" onClick={e => backHome()}><span className="material-icons-round">home</span>Home</button>
+                    <button type="button" className="nav-bar__content__menu__item__playlist" onClick={e =>displayQueue()} ><span className="material-icons-round" >playlist_play</span>Playlists</button>
                 </div>
             </div>
             <button type="button" id="logout" className="nav-bar__content__logout"><span className="material-icons-round" onClick={e => signOut(auth)} >logout</span></button>

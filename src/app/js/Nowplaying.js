@@ -2,6 +2,7 @@ import React from 'react'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import '../styles/components/Nowplaying.scss'
 import { auth, db } from './Firebase'
+import { displayQueue } from './Queue'
 
 let volume = {
     value: 0.125,
@@ -210,7 +211,8 @@ function Nowplaying() {
                 </div>
             </div>
             <div id="volume" className="now-playing-bar__volume">
-                <button id="volume-button" className="now-playing-bar__volume__button material-icons-round" onClick={toggleVolume}>volume_up</button>
+                <button id="queue-button" className="now-playing-bar__volume__button material-icons-round" onClick={e => displayQueue()} >menu</button>
+                <button id="volume-button" className="now-playing-bar__volume__button material-icons-round" onClick={e => toggleVolume()}>volume_up</button>
                 <div id="volume-slider" className="now-playing-bar__volume__slider">
                     <div id="volume-slider-fill" className="now-playing-bar__volume__slider__fill"></div>
                     <input type="range" id="volume-slider-thumb" className="now-playing-bar__volume__slider__thumb" defaultValue="50" min="0" max="100" step="1" onInput={e => modVolume(0.25 - (e.target.value / 400))}></input>

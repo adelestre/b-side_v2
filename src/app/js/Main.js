@@ -95,9 +95,18 @@ function Main(props) {
     if (userData) {
         return (
             <div>
-
-                <Queue userData={userData.data()} albumsData={albumsData} artistsData={artistsData} songsData={songsData}></Queue>
+                <div id="main" className="main">
+                    <div id="main-header" className="main__header">
+                        <div className="main__header__welcome">Hello {userData.data()["Name"]}</div>
+                    </div>
+                    <div className="main__center">
+                        <div className="main__center__album-section-title">Albums</div>
+                        {false && displayRandomAlbums(36)}
+                        {true && displayAllAlbums()}
+                    </div>
+                </div>
                 <Infotab displayAlbum={displayAlbum} />
+                <Queue userData={userData.data()} albumsData={albumsData} artistsData={artistsData} songsData={songsData}></Queue>
                 <Header userData={userData.data()}/>
                 <Overlay userData={userData.data()}/>
                 <Navbar userData={userData.data()} albumsData={albumsData} artistsData={artistsData} />

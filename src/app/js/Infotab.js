@@ -5,7 +5,7 @@ import { collection, query, where, orderBy } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import '../styles/components/Infotab.scss'
 
-export function backHome() {
+export function removeInfoTab() {
     const infotab = document.querySelector("#info-tab");
     const artist_infos = document.querySelector('.nav-bar__content__infos');
     const menu = document.querySelector(".nav-bar__content__menu");
@@ -98,7 +98,7 @@ function Infotab(props) {
         <div id="info-tab" className="info-tab">
             <div className="info-tab__header">
                 <div className="info-tab__header__background"></div>
-                <button id="info-button-back" className="info-tab__button-back"><span className="material-icons-round" onClick={backHome}>arrow_back_ios</span></button>
+                <button id="info-button-back" className="info-tab__button-back"><span className="material-icons-round" onClick={removeInfoTab}>arrow_back_ios</span></button>
                 {displayAlbum["bool"] && <AlbumInfoHeader album={displayAlbum["album"]} artist={displayAlbum["artist"]} />}
             </div>
             {displayAlbum["bool"] && <AlbumInfoContent album={displayAlbum["album"]} artist={displayAlbum["artist"]} />}
