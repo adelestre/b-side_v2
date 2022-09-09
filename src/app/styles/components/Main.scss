@@ -83,18 +83,18 @@
             font-size: rem(25);
         }
         &__container-album {
-            row-gap: 16px; //0
-            //grid-auto-rows: 0;
+            row-gap: 16px;
             grid-template-rows: 1fr;
-            //overflow-y: hidden;
             grid-gap: 24px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             @include breakpoint-down('medium') {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-gap: 18px;
             }
             @include breakpoint-down('small') {
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                grid-gap: 12px;
             }
             .album {
                 background-color: $black3;
