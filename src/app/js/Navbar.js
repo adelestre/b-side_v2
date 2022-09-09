@@ -16,6 +16,11 @@ export function displayArtistInfoNavBar(artist) {
     }
 }
 
+export function displayQueue() {
+    const queue = document.querySelector("#queue");
+    queue.classList.add('show');
+}
+
 export function Navbar() {
 
     return (
@@ -46,7 +51,7 @@ export function Navbar() {
                 </div>
                 <div className="nav-bar__content__menu up">
                     <button type="button" className="nav-bar__content__menu__item__home"><span className="material-icons-round">home</span>Home</button>
-                    <button type="button" className="nav-bar__content__menu__item__playlist"><span className="material-icons-round">playlist_play</span>Playlists</button>
+                    <button type="button" className="nav-bar__content__menu__item__playlist"><span className="material-icons-round" onClick={e => displayQueue()} >playlist_play</span>Playlists</button>
                 </div>
             </div>
             <button type="button" id="logout" className="nav-bar__content__logout"><span className="material-icons-round" onClick={e => signOut(auth)} >logout</span></button>

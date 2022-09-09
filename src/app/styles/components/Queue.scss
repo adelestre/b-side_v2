@@ -1,0 +1,235 @@
+@use '../util' as *;
+@use '../globals' as *;
+
+.queue {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0px;
+    bottom: 90px;
+    transform: translateX(100%);
+    background-color: $black2;
+    transition: 300ms;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: 200ms;
+    @include breakpoint("large") {
+        left: 225px;
+        &::-webkit-scrollbar {
+            background-color: transparent;
+            width: 10px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: transparent;
+            transition: 300ms;
+        }
+        &:hover {
+            &::-webkit-scrollbar-thumb {
+                background-color: $black;
+                border-radius: 20px;
+            }
+        }
+    }
+    &.show {
+        transform: translateX(0);
+    }
+    &__button-back {
+        z-index: 1;
+        position: absolute;
+        top: 17px;
+        left: 32px;
+        border: 2px solid $lightgray;
+        background: none;
+        border-radius: 50%;
+        outline: none;
+        padding: 0;
+        color: $lightgray;
+        cursor: pointer;
+        @include breakpoint-down("medium") {
+            left: 80px;
+        }
+        @include breakpoint-down("small") {
+            top: 14px;
+            left: 60px;
+            transform: scale(0.75);
+        }
+        @include breakpoint-down("xsmall") {
+            left: 45px;
+            transform: scale(0.5625);
+        }
+        &:hover {
+            color: white;
+            background-color: $lightgray10prc;
+        }
+        &>span {
+            height: 34px;
+            width: 36px;
+            padding-top: 5px;
+            padding-right: 4px;
+            padding-left: 2px;
+        }
+    }
+    &__content {
+        background-color: $darkgray;
+        &__song {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 24px;
+            @include breakpoint-down("small") {
+                padding: 8px 8px 16px 8px;
+            }
+            @include breakpoint-down("xsmall") {
+                padding: 8px 4px 8px 8px;
+            }
+            &__left-content {
+                height: inherit;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                min-width: 34%;
+                @include breakpoint-down("medium") {
+                   min-width: 40%; 
+                }
+                @include breakpoint-down("small") {
+                    min-width: 70%; 
+                 }
+                &>button {
+                    position: relative;
+                    cursor: pointer;
+                    outline: none;
+                    border-radius: 100%;
+                    border: none;
+                    background: none;
+                    padding: 0;
+                    opacity: 1;
+                    transition: 0.2s;
+                    color: $lightgray;
+                }
+                &__img-container {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin-right: 16px;
+                    height: 64px;
+                    @include breakpoint-down("xsmall") {
+                        height: 58px;
+                    }
+                    &>img {
+                        height: 100%;
+                        width: auto;
+                    }
+                }
+                &__artist-title-container {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    min-width: fit-content;
+                    max-width: calc(100vw - 300px);
+                    @include breakpoint-down("small") {
+                        max-width: calc(100vw - 280px);
+                    }
+                    @include breakpoint-down("xsmall") {
+                        max-width: calc(100vw - 255px);
+                    }
+                    &__title {
+                        color: $lightgray;
+                        justify-self: flex-start;
+                        word-break: break-all;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        max-width: inherit;
+                        font-size: rem(22);
+                        text-transform: none;
+                        @include breakpoint-down("large") {
+                            font-size: rem(19);
+                        }
+                    }
+                    &__artist {
+                        color: $lightgray;
+                        word-break: break-all;
+                        font-size: rem(16);
+                        opacity: 0.8;
+                        @include breakpoint-down("large") {
+                            font-size: rem(15);
+                        }
+                    }
+                }
+            }
+            &__middle-content {
+                max-width: 33%;
+                @include breakpoint-down("medium") {
+                    max-width: 30%;
+                }
+                @include breakpoint-down("small") {
+                    visibility: hidden;
+                    width: 0;
+                }
+                & > div {
+                    color: $lightgray;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+            &__right-content {
+                display: flex;
+                flex-direction: row;
+                justify-content: right;
+                min-width: 33%;
+                @include breakpoint-down("medium") {
+                    min-width: 20%;
+                }
+                @include breakpoint-down("small") {
+                    min-width: 30%;
+                }
+                @include breakpoint-down("xsmall") {
+                    transform: scale(0.8);
+                }
+                & > div {
+                    align-self: center;
+                }
+                &__like {
+                    border: none;
+                    background: none;
+                    margin-right: 16px;
+                    color: $lightgray;
+                    cursor: pointer;
+                    @include breakpoint-down("small") {
+                        margin-right: 8px;
+                    }
+                    @include breakpoint-down("xsmall") {
+                        margin-right: 4px;
+                    }
+                }
+                &__duration {
+                    color: $lightgray;
+                    width: max-content;
+                    justify-content: space-around;
+                    font-size: rem(16);
+                    text-align: right;
+                    margin-right: 16px;
+                    @include breakpoint-down("small") {
+                        margin-right: 8px;
+                    }
+                    @include breakpoint-down("xsmall") {
+                        margin-right: 4px;
+                    }
+                }
+                &__options {
+                    color: $lightgray;
+                    text-align: right;
+                    cursor: pointer;
+                    @include breakpoint-down("small") {
+                        margin-right: 8px;
+                    }
+                    @include breakpoint-down("xsmall") {
+                        margin-right: 4px;
+                    }
+                }
+            }
+        }
+    }
+}
