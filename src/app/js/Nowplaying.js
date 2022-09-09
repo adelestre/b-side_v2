@@ -215,7 +215,7 @@ function Nowplaying() {
                 </div>
             </div>
             <div id="volume" className="now-playing-bar__volume">
-                <button id="queue-button" className="now-playing-bar__volume__button material-icons-round" onClick={e => displayQueue()} >menu</button>
+                <button id="queue-button" className="now-playing-bar__volume__button material-icons-round mobile-display" onClick={e => displayQueue()} >menu</button>
                 <button id="volume-button" className="now-playing-bar__volume__button material-icons-round" onClick={e => toggleVolume()}>volume_up</button>
                 <div id="volume-slider" className="now-playing-bar__volume__slider">
                     <div id="volume-slider-fill" className="now-playing-bar__volume__slider__fill"></div>

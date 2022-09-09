@@ -83,25 +83,25 @@ p {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 8px 24px;
+        padding: 8px 24px 8px 0px;
         flex-direction: row;
         @include breakpoint-down("small") {
-            padding: 8px 8px 16px 8px;
+            padding: 8px 8px 8px 0px;
         }
         @include breakpoint-down("xsmall") {
-            padding: 8px 4px 8px 8px;
+            padding: 8px 4px 8px 0px;
         }
         &__left-content {
             height: inherit;
             display: flex;
             flex-direction: row;
             align-items: center;
-            min-width: 34%;
-            @include breakpoint-down("medium") {
-               min-width: 40%; 
+            width: 25vw;
+            @include breakpoint-down("low-medium") {
+                width: 50vw;
             }
-            @include breakpoint-down("small") {
-                min-width: 70%; 
+            @include breakpoint-down("xsmall") {
+                padding: 8px 4px 8px 0px;
             }
             &>button {
                 position: relative;
@@ -110,7 +110,7 @@ p {
                 border-radius: 100%;
                 border: none;
                 background: none;
-                padding: 0;
+                padding: 8px;
                 opacity: 1;
                 transition: 0.2s;
                 color: $lightgray;
@@ -133,14 +133,7 @@ p {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                min-width: fit-content;
-                max-width: calc(100vw - 300px);
-                @include breakpoint-down("small") {
-                    max-width: calc(100vw - 280px);
-                }
-                @include breakpoint-down("xsmall") {
-                    max-width: calc(100vw - 255px);
-                }
+                width: 100%;
                 &__title {
                     color: $lightgray;
                     justify-self: flex-start;
@@ -158,6 +151,9 @@ p {
                 &__artist {
                     color: $lightgray;
                     word-break: break-all;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                     font-size: rem(16);
                     opacity: 0.8;
                     @include breakpoint-down("large") {
@@ -167,11 +163,7 @@ p {
             }
         }
         &__middle-content {
-            max-width: 33%;
-            @include breakpoint-down("medium") {
-                max-width: 30%;
-            }
-            @include breakpoint-down("small") {
+            @include breakpoint-down("low-medium") {
                 visibility: hidden;
                 width: 0;
             }
@@ -180,21 +172,21 @@ p {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+                font-size: rem(18);
             }
         }
         &__right-content {
             display: flex;
             flex-direction: row;
             justify-content: right;
-            min-width: 33%;
-            @include breakpoint-down("medium") {
-                min-width: 20%;
-            }
+            gap: 16px;
             @include breakpoint-down("small") {
-                min-width: 30%;
+                transform: scale(0.8);
+                gap: 4px
             }
             @include breakpoint-down("xsmall") {
                 transform: scale(0.8);
+                gap: 2px;
             }
             & > div {
                 align-self: center;
@@ -202,15 +194,8 @@ p {
             &__like {
                 border: none;
                 background: none;
-                margin-right: 16px;
                 color: $lightgray;
                 cursor: pointer;
-                @include breakpoint-down("small") {
-                    margin-right: 8px;
-                }
-                @include breakpoint-down("xsmall") {
-                    margin-right: 4px;
-                }
             }
             &__duration {
                 color: $lightgray;
@@ -218,24 +203,15 @@ p {
                 justify-content: space-around;
                 font-size: rem(16);
                 text-align: right;
-                margin-right: 16px;
-                @include breakpoint-down("small") {
-                    margin-right: 8px;
-                }
                 @include breakpoint-down("xsmall") {
-                    margin-right: 4px;
+                    width: 0;
+                    visibility: hidden;
                 }
             }
             &__options {
                 color: $lightgray;
                 text-align: right;
                 cursor: pointer;
-                @include breakpoint-down("small") {
-                    margin-right: 8px;
-                }
-                @include breakpoint-down("xsmall") {
-                    margin-right: 4px;
-                }
             }
         }
         &.playing {
@@ -248,13 +224,13 @@ p {
             .bar-info-song__content__song__right-content__options {
                 opacity: 1;
             }
-            background-color: #ffffff0a;
+            background-color: #ffffff10;
         }
         &:hover {
             .bar-info-song__content__song__right-content__options {
                 opacity: 1;
             }
-            background-color: #ffffff1a;
+            background-color: #ffffff20;
         }
     }
 }

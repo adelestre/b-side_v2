@@ -26,7 +26,7 @@ function Queue(props) {
     let currentSong = songs.docs.find(doc => doc.data()["ID_Song"] === currentSongID)
     let currentSongAlbum = albums.docs.find(doc => doc.data()["ID_Album"] === currentSong.data()["ID_Album"])
     let currentSongArtist = artists.docs.find(doc => doc.data()["ID_Artist"] === currentSong.data()["ID_Artist"])
-    let count = 0;
+    let count = 1;
     return (
       <div id='queue' className='queue'>
         <button id="info-button-back" className="queue__button-back"><span className="material-icons-round" onClick={e => removeQueueTab()}>arrow_back_ios</span></button>

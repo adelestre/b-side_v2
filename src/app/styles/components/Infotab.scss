@@ -96,12 +96,18 @@
                 padding: 0 8px 0 16px;
             }
             &__top {
-                padding-top: 80px;
-                padding-left: 80px;
+                margin-top: 80px;
+                margin-left: 50px;
                 display: flex;
                 max-width: none;
                 overflow: hidden;
                 position: relative;
+                @include breakpoint-down("medium") {
+                    margin-left: 40px
+                }
+                @include breakpoint-down("small") {
+                    margin-left: 25px
+                }
                 &__img {
                     height: 200px;
                     width: 200px;

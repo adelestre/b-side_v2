@@ -76,11 +76,17 @@
         &__header {
             padding-left: 46px;
             font-size: rem(32);
+            @include breakpoint-down("small") {
+                padding-left: 28px;
+            }
         }
         &__sub-header {
             padding-left: 46px;
             font-size: rem(24);
-            padding-top: 32px
+            padding-top: 32px;
+            @include breakpoint-down("small") {
+                padding-left: 28px;
+            }
         }
         &__song {
             width: 100%;

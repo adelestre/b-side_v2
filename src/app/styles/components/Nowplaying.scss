@@ -89,11 +89,9 @@
                 width: 33px;
                 height: 33px;
                 margin: 0 20px;
-                font-size: rem(30);
+                font-size: rem(31);
                 transition: 0.1s;
                 padding-left: rem(1.5);
-                padding-top: rem(2);
-                padding-bottom: rem(2);
                 background-color: $white;
                 color: $black3;
                 outline: none;
@@ -163,6 +161,11 @@
             background: none;
             color: $lightgray;
             font-size: 22px;
+            @include breakpoint-down('medium') {
+                display: none;
+                position: absolute;
+                right: calc(5% + 60px);
+            }
         }
         &__slider {
             transform: rotate(180deg);
@@ -211,9 +214,12 @@
                     background: none;
                 }
             }
-        }
-        @include breakpoint-down('medium') {
-            display: none;
+            @include breakpoint-down('medium') {
+                display: none;
+            }
         }
     }
+}
+.mobile-display {
+    display: block;
 }
