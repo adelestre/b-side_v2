@@ -92,6 +92,9 @@ function updateCurrentSong(song) {
         other_tiles.forEach(element => { element.classList.remove('playing') })
         tile.classList.add('playing');
     }
+    updateDoc(doc(db, "Users", auth.currentUser.uid), {
+        "C_Playing": song.data()["ID_Song"]
+    })
     pageTitle.textContent = song.data()["Name"];
     getDoc(doc(db, "Artists", song.data()["ID_Artist"].toString())).then(artist => {
         getDoc(doc(db, "Albums", song.data()["ID_Album"].toString())).then(album => {
@@ -179,7 +182,8 @@ export function setQueue(arr, count) {
     temp.shift();
     updateDoc(doc(db, "Users", auth.currentUser.uid), {
         "Queue": arr,
-        "P_Queue": temp
+        "P_Queue": temp,
+        "C_Playing": arr[0]
     })
     play(arr[0]);
 }

@@ -40,7 +40,6 @@ function Main(props) {
                     {jsx.map(a => {return a})}
                 </div>
             )
-            
         }
     }
     function displayAllAlbums() {
@@ -106,7 +105,7 @@ function Main(props) {
                     </div>
                 </div>
                 <Infotab displayAlbum={displayAlbum} />
-                <Queue userData={userData.data()} albumsData={albumsData} artistsData={artistsData} songsData={songsData}></Queue>
+                <Queue userID={user.uid} albumsData={albumsData} artistsData={artistsData} songsData={songsData} />
                 <Header userData={userData.data()}/>
                 <Overlay userData={userData.data()}/>
                 <Navbar userData={userData.data()} albumsData={albumsData} artistsData={artistsData} />
