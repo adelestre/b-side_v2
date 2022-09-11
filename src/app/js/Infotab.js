@@ -27,9 +27,8 @@ export function select_song(e) {
 }
 
 export function BarInfoSong(song, artist, album, count) {
-    let playing = count < 0 ? " playing" : ""
     return (
-        <div id={"song" + song.data()["ID_Song"]} key={"song" + song.data()["ID_Song"]} className={"bar-info-song__content__song album" + album.data()["ID_Album"] + playing} onClick={e => select_song(e)}>
+        <div id={"song" + song.data()["ID_Song"]} key={"song" + song.data()["ID_Song"]} className={"bar-info-song__content__song album" + album.data()["ID_Album"]} onClick={e => select_song(e)}>
             <div className={"bar-info-song__content__song__left-content"}>
                 {count >= 0 ? <button className="material-icons-round" onClick={e => setQueue(album.data()['ID_Songs'], count)}>play_arrow</button> : <button className="material-icons-round hidden" >play_arrow</button>}
                 <div className={"bar-info-song__content__song__left-content__img-container"}>

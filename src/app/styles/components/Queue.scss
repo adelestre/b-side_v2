@@ -72,6 +72,11 @@
     &__content {
         padding-top: 80px;
         color: $lightgray;
+        .bar-info-song__content__song:nth-child(3) {
+            .bar-info-song__content__song__left-content__artist-title-container__title {
+                color: $purple5;
+            }
+        }
         &__header {
             padding-left: 46px;
             font-size: rem(32);

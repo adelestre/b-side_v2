@@ -110,7 +110,6 @@ function updateCurrentSong(song) {
 function play(ID_Song) {
     const music_duration = document.querySelector("#duration");
     getDoc(doc(db, "Songs", ID_Song.toString())).then((song) => {
-        console.log(song)
         if (!currentAudio.exists) {
             initAudio(ID_Song);
         }

@@ -59,7 +59,6 @@ function Main(props) {
         if (albumsData) {
             let jsx = []
             albumsData.docs.forEach(album => {
-                console.log()
                 if (album.data()["ID_Artist"] === ID_Artist) {
                     jsx.push(createAlbumTile(album));
                 }
