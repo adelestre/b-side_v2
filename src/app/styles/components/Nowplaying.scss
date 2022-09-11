@@ -2,7 +2,7 @@
 @use '../globals' as *;
 .now-playing-bar {
     position: fixed;
-    background-color: $black1;
+    background: $gradient4;
     bottom: 0;
     left: 0;
     height: 90px;

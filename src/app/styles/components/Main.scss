@@ -6,7 +6,7 @@
     left: 0;
     right: 0;
     bottom: 90px;
-    background-color: $black;
+    background: $gradient2;
     overflow-y: hidden;
     overflow-x: hidden;
     @include breakpoint("large") {
@@ -21,7 +21,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        background-color: $black1;
+        background-color: $darkgray;
         padding: 20px 16px;
         @include breakpoint-down("small") {
             height: 62.5px;

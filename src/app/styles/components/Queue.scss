@@ -8,7 +8,7 @@
     right: 0px;
     bottom: 90px;
     transform: translateX(100%);
-    background-color: $black2;
+    background: $gradient2;
     transition: 300ms;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -71,7 +71,6 @@
     }
     &__content {
         padding-top: 80px;
-        background-color: $darkgray;
         color: $lightgray;
         &__header {
             padding-left: 46px;
