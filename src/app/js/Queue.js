@@ -23,26 +23,28 @@ function Queue(props) {
   const songs = props.songsData
   if (user && albums && artists && songs) {
     let currentSongID = user.data()["C_Playing"]
-    let currentSong = songs.docs.find(doc => doc.data()["ID_Song"] === currentSongID)
-    let currentSongAlbum = albums.docs.find(doc => doc.data()["ID_Album"] === currentSong.data()["ID_Album"])
-    let currentSongArtist = artists.docs.find(doc => doc.data()["ID_Artist"] === currentSong.data()["ID_Artist"])
-    return (
-      <div id='queue' className='queue'>
-        <button id="info-button-back" className="queue__button-back"><span className="material-icons-round" onClick={e => removeQueueTab()}>arrow_back_ios</span></button>
-        <div className='queue__content'>
-          <div className='queue__content__header'>Queue</div>
-          <div className='queue__content__sub-header'>Now playing</div>
-          {BarInfoSong(currentSong, currentSongArtist, currentSongAlbum, -1)}
-          <div className='queue__content__sub-header'>Coming next</div>
-          {user.data()["P_Queue"].map(song_ID => {
-            const song = songs.docs.find(doc => doc.data()["ID_Song"] === song_ID)
-            const album = albums.docs.find(doc => doc.data()["ID_Album"] === song.data()["ID_Album"])
-            const artist = artists.docs.find(doc => doc.data()["ID_Artist"] === song.data()["ID_Artist"])
-            return BarInfoSong(song, artist, album, -1)
-          })}
+    if (currentSongID) {
+      let currentSong = songs.docs.find(doc => doc.data()["ID_Song"] === currentSongID)
+      let currentSongAlbum = albums.docs.find(doc => doc.data()["ID_Album"] === currentSong.data()["ID_Album"])
+      let currentSongArtist = artists.docs.find(doc => doc.data()["ID_Artist"] === currentSong.data()["ID_Artist"])
+      return (
+        <div id='queue' className='queue'>
+          <button id="info-button-back" className="queue__button-back"><span className="material-icons-round" onClick={e => removeQueueTab()}>arrow_back_ios</span></button>
+          <div className='queue__content'>
+            <div className='queue__content__header'>Queue</div>
+            <div className='queue__content__sub-header'>Now playing</div>
+            {BarInfoSong(currentSong, currentSongArtist, currentSongAlbum, -1)}
+            <div className='queue__content__sub-header'>Coming next</div>
+            {user.data()["P_Queue"].map(song_ID => {
+              const song = songs.docs.find(doc => doc.data()["ID_Song"] === song_ID)
+              const album = albums.docs.find(doc => doc.data()["ID_Album"] === song.data()["ID_Album"])
+              const artist = artists.docs.find(doc => doc.data()["ID_Artist"] === song.data()["ID_Artist"])
+              return BarInfoSong(song, artist, album, -1)
+            })}
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
 }
 

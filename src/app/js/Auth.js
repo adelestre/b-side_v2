@@ -38,16 +38,22 @@ function Auth() {
         })
     }
     function signInWithEmail() {
-        if (signInEmail === "" || signInPassword === "") {
-            setSignUpError("Please, make sure all the fields are filled.");
-            return;
+        if (signInEmail === "" && signInPassword === "") {
+            signInWithEmailAndPassword(auth, "guest@bside-music.com", "guest01").then(cred => {
+                setSignInEmail("");
+                setSignInPassword("");
+            }).catch(err => {
+                setSignInError(err.message);
+            })
         }
-        signInWithEmailAndPassword(auth, signInEmail, signInPassword).then(cred => {
-            setSignInEmail("");
-            setSignInPassword("");
-        }).catch(err => {
-            setSignInError(err.message);
-        })
+        else {
+            signInWithEmailAndPassword(auth, signInEmail, signInPassword).then(cred => {
+                setSignInEmail("");
+                setSignInPassword("");
+            }).catch(err => {
+                setSignInError(err.message);
+            })
+        }
     }
     function keySignIn(key) {
         if (key.code === "Enter" || key.code === "NumpadEnter") {

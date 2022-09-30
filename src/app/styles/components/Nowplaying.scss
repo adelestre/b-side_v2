@@ -2,7 +2,7 @@
 @use '../globals' as *;
 .now-playing-bar {
     position: fixed;
-    background: $gradient4;
+    background-color: $darkgray;
     bottom: 0;
     left: 0;
     height: 90px;
@@ -124,7 +124,7 @@
                 display: flex;
                 width: 40vw;
                 height: 6px;
-                background: $darkgray;
+                background: $black4;
                 cursor: pointer;
                 margin: 0 0.5vw;
                 border-radius: 20px;
@@ -180,7 +180,7 @@
                 position: absolute;
                 height: 6px;
                 width: 3vw;
-                background: $darkgray;
+                background: $black4;
             }
             &__thumb {
                 position: absolute;

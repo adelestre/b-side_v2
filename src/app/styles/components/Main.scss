@@ -6,7 +6,7 @@
     left: 0;
     right: 0;
     bottom: 90px;
-    background: $gradient2;
+    background: $gradient4;
     overflow-y: hidden;
     overflow-x: hidden;
     @include breakpoint("large") {
@@ -107,9 +107,10 @@
                 padding: 16px;
                 position: relative;
                 width: 100%;
+                transition: 0.2s;
                 cursor: pointer;
                 &:hover {
-                    background-color: $darkgray;
+                    background-color: $black4;
                 }
                 &__content {
                     &__img {
