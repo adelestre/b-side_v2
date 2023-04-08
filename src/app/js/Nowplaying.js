@@ -4,6 +4,8 @@ import '../styles/components/Nowplaying.scss'
 import { auth, db } from './Firebase'
 import { displayQueue } from './Queue'
 
+const url = "https://storage.cloud.google.com/b-side-songs/songs/";
+
 let volume = {
     value: 0.125,
     muted: false,
@@ -114,7 +116,7 @@ function play(ID_Song) {
             initAudio(ID_Song);
         }
         updateCurrentSong(song);
-        currentAudio.element.src = "https://storage.googleapis.com/b-side-songs/songs/" + ID_Song + ".mp3"
+        currentAudio.element.src = url + ID_Song + ".mp3"
         music_duration.textContent = song.data()["Duration"];
     }).then(() => {
         resume();
